@@ -382,7 +382,8 @@
 %  snapshot_file = strcat( strcat( snap_root,int2str(n_store),'.plt'));
 
 %  twod_to_tecplot( snapshot_file, x, e_conn, [uc,vc,pc], int2str(1) );
-
+  u = uc;  v = vc;  p = pc;
+  
   t0=toc;
   fprintf('time for setup is: %d\n',t0)
 
