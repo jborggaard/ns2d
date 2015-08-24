@@ -85,7 +85,7 @@
     epsilon          = 1e-4/mu;
     
     %  Use mex file to perform element integrations
-    if_mex           = true;
+    if_mex           = false;
     
     %  Define time integration parameters
     t_initial        = 0;   
@@ -133,7 +133,7 @@
     epsilon          = 1e-4/mu;
     
     %  Use mex file to perform element integrations
-    if_mex           = true;
+    if_mex           = false;
     
     %  Define the initial condition file
     ic_file          = 'none';
@@ -182,7 +182,7 @@
     epsilon          = 5e-4/mu;
     
     %  Use mex file to perform element integrations
-    if_mex           = true;
+    if_mex           = false;
     
     %  Define time integration parameters
     t_initial        = 0;   
@@ -274,7 +274,7 @@
     epsilon          = 5e-5/mu;
     
     %  Use mex file to perform element integrations
-    if_mex           = true;
+    if_mex           = false;
     
     %  Define time integration parameters
     t_initial        = 0;   

@@ -1,0 +1,2 @@
+VTK solutions snapshots will be saved in this directory.  Use a tool such
+as Paraview to visualize the simulation.
