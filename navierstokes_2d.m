@@ -115,7 +115,7 @@
 
     %  Define output options
     matlab_file  = 'solutions_mat/ns_2d_01.mat';
-    tecplot_file = 'solutions_plt/ns_2d_01.plt';
+  % tecplot_file = 'solutions_plt/ns_2d_01.plt';
     vtk_file     = 'solutions_vtk/ns_2d_01.vtk';
     snap_root    = 'solutions_vtk/ns_2d_01_';
     
@@ -163,7 +163,7 @@
 
     %  Define output options
     matlab_file  = 'solutions_mat/ns_2d_02.mat';
-    tecplot_file = 'solutions_plt/ns_2d_02.plt';
+  % tecplot_file = 'solutions_plt/ns_2d_02.plt';
     vtk_file     = 'solutions_vtk/ns_2d_02.vtk';
     snap_root    = 'solutions_vtk/ns_2d_02_';
 
@@ -211,7 +211,7 @@
     f_function = @f_function0_2d;
     
     matlab_file  = 'solutions_mat/ns_2d_05.mat';
-    tecplot_file = 'solutions_plt/ns_2d_05.plt';
+  % tecplot_file = 'solutions_plt/ns_2d_05.plt';
     vtk_file     = 'solutions_vtk/ns_2d_05.vtk';
     snap_root    = 'solutions_vtk/ns_2d_05_';
 
@@ -258,7 +258,7 @@
     f_function = @f_function7_2d;
 
     matlab_file  = 'solutions_mat/ns_2d_07.mat';
-    %tecplot_file = 'solutions_plt/ns_2d_07.plt';
+  % tecplot_file = 'solutions_plt/ns_2d_07.plt';
     vtk_file     = 'solutions_vtk/ns_2d_07.vtk';
     snap_root    = 'solutions_vtk/ns_2d_07_';
 
@@ -302,7 +302,7 @@
     f_function = @f_function0_2d;
 
     matlab_file  = 'solutions_mat/ns_2d_08.mat';
-    tecplot_file = 'solutions_plt/ns_2d_08.plt';
+  % tecplot_file = 'solutions_plt/ns_2d_08.plt';
     vtk_file     = 'solutions_vtk/ns_2d_08.vtk';
     snap_root    = 'solutions_vtk/ns_2d_08_';
 
