@@ -1,0 +1,57 @@
+Mex Instructions
+
+Tested in MATLAB_2014a:
+
+On a Mac: Install XCode (open it an add command line tools)
+
+          in /Applications/MATLAB_2014a/bin (your directory may vary,
+          perhaps find it with "which matlab?")
+          edit mexopts.sh
+          replace 10.7 with 10.11 (or your current version) everywhere
+          (save)
+
+          sh ./mexopts.sh
+
+Edit the two *.prj files and replace /Users/jborggaa with the path to your
+ns2d directory
+
+Open Matlab  (tested in 2014a)
+mex -setup
+1
+
+browse to your ns2d directory
+
+>> addpath('fem_functions')
+
+>> edit wj_2d_element_integrations.m
+(comment out lines 48 and 49)
+(uncomment lines 53 and 54)
+(save and close the file)
+
+>> edit wj_2d_st_element_integrations.m
+(comment out line 44)
+(uncomment line 48)
+(save and close the file)
+
+>> open wj_2d_elem_int.prj
+(click on the build tab)
+(click on the build button, in the Settings box under the two Output settings)
+
+>> !cp fem_functions/twod_shape.m .
+>> open wj_2d_st_elem_int.prj
+(click on the build tab)
+(click on the build button, in the Settings box under the two Output settings)
+>> !rm twod_shape.m
+
+>> edit wj_2d_element_integrations.m
+(uncomment lines 48 and 49)
+(comment out lines 53 and 54)
+(save and close the file)
+
+>> edit wj_2d_st_element_integrations.m
+(uncomment line 44)
+(comment out line 48)
+(save and close the file)
+
+You should be done
+
