@@ -20,8 +20,10 @@ function [r,s,w] = twod_gauss(rule)
 
   if (rule == 1)
     % The trivial linear triangle case
+    r    = zeros(1,1);  s    = zeros(1,1);
     r(1) = 1/3;         s(1) = 1/3;
     
+    w    = zeros(1,1);
     w(1) = 0.5;
     
   elseif (rule == 3)

@@ -28,6 +28,8 @@
 %                          = 8  flow past a circular cylinder, problem described
 %                               in Hay, Borggaard, and Pelletier, 2009.
 %                               defined in problem08_uv.m
+%                          = 11 flow past a circular cylinder
+%                               defined in problem11_uv.m  (open loop)
 %
 %  Internal Variables:
 %            Flow Parameters:
@@ -305,6 +307,62 @@
   % tecplot_file = 'solutions_plt/ns_2d_08.plt';
     vtk_file     = 'solutions_vtk/ns_2d_08.vtk';
     snap_root    = 'solutions_vtk/ns_2d_08_';
+
+  elseif ( flow_case == 11 )
+    %% -------------------------------------------------------------------------
+    %  FLOW_CASE == 11:  The unsteady flow past a cylinder
+    %%--------------------------------------------------------------------------
+    %  Define the flow parameters
+    Re               = 1000;
+    mu               = 1/Re;
+    
+    %  Define the penalty parameters
+    epsilon          = 2e-9/mu;
+    
+    %  Use mex file to perform element integrations
+    if_mex           = true;
+    
+    %  Define time integration parameters
+    t_initial        = 0;   
+    t_final          = 200;
+    n_steps          = 16001;
+    n_save           = 8;
+    time_vector      = linspace(t_initial,t_final,n_steps);
+    t_step           = time_vector(2)-time_vector(1);
+
+    theta            = 0.5;
+    
+    %  Define the initial condition file
+     ic_file          = 'solutions_mat/ns_2d_steady_Re1000_11_2e-6.mat';
+     n_store          = 0;
+    %ic_file = 'solutions_vtk/case11_Re1000/ns_2d_11_0490.mat';
+    %n_store = 490;
+%    ic_file = 'solutions_vtk/case11_Re1000/ns_2d_11_0720.mat';
+%    n_store = 720;
+
+    % restart from file
+%    ic_file          = 'solutions_vtk/ns_2d_11_640.mat';
+%    n_store          = 640;
+     time_varying_bc  = true;
+%    time_varying_bc  = false;
+    
+    %  Define Newton solver parameters
+    resid_tol        = 1e-5;
+    step_tol         = 1e-5;
+    max_iterations   = 10;
+
+    backtracking_iterations = 2;
+    lambda_1                = 1;
+
+    force_new_setup = false;
+    [x,e_conn,ide_u,ide_p,dir_u] = problem11_uv(force_new_setup);
+    d_function = @oscillating11_2d;
+    f_function = @f_function0_2d;
+
+    matlab_file  = 'solutions_vtk/ns_2d_11.mat';
+%   tecplot_file = 'solutions_plt/ns_2d_11.plt';
+    vtk_file     = 'solutions_vtk/case11_Re1000/ns_2d_11.vtk';
+    snap_root    = 'solutions_vtk/case11_Re1000/ns_2d_11_';
 
   else
     error('navierstokes_2d:  flow_case=%d is not defined\n',flow_case)
