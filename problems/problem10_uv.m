@@ -1,13 +1,13 @@
-function [x,e_conn,ide_u,ide_p,dir_u] = problem11_uv(override)
+function [x,e_conn,ide_u,ide_p,dir_u] = problem10_uv(override)
 %----------------------------------------------------------------------------78-
-%  problem11_uv - a function that provides input data to a 2D Navier-Stokes
+%  problem10_uv - a function that provides input data to a 2D Navier-Stokes
 %                 finite element solver (unknown variables u, v, and p).  
 %
 %                 this simulates the flow past an oscillating cylinder
 %                 (flow from left to right)
 %
 %  useage:
-%        [x,e_conn,ide_u,ide_p,dir_u] = problem11_uv(force_new_setup))
+%        [x,e_conn,ide_u,ide_p,dir_u] = problem10_uv(force_new_setup))
 %
 %  inputs: 
 %        force_new_setup - determines whether or not new mesh info is calculated
@@ -21,7 +21,7 @@ function [x,e_conn,ide_u,ide_p,dir_u] = problem11_uv(override)
   end
   
   matlab_file = ...
-      'solutions_mat/cylinder_2d_025.mat';
+      'solutions_mat/cylinder_mesh_2.mat';
   mesh_file    = ...
       '~/Meshes/cylinder_2d_025.msh'; 
 
