@@ -1,1 +1,4 @@
 Matlab solutions will be saved here, these can be used to restart simulations, etc.
+This directory/folder also contains some intermediate equation numbering (saved to 
+ensure consistency between unknown numbering of the current simulation and that
+associated with the restart simulation).

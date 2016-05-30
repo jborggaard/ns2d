@@ -24,6 +24,8 @@
 %                               defined in problem02_uv.m
 %                         = 5,  flow over a Reuleaux shape
 %                               defined in problem05_uv.m
+%                         =13,  flow past twin cylinders
+%                               defined in problem13_uv.m
 %
 %  Internal Variables:
 %            Flow Parameters:
@@ -157,6 +159,43 @@
 %    tecplot_file = 'solutions_plt/ns_2d_steady_05.plt';
     vtk_file     = 'solutions_vtk/ns_2d_steady_05.vtk';
     
+  elseif ( flow_case == 13 )
+    %%
+    Re     = 60.00;
+    fprintf('The Reynolds number is %g\n',Re)
+    mu     = 1/Re;
+
+    %  Sizes for cylinders*.geo meshes
+    msize  = 111814;
+    
+    %  Define the penalty parameters
+    epsilon          = 1e-5/mu;
+            
+    %  Use mex file to perform element integrations
+    if_mex           = true;
+
+    %  Define the initial guess from a file  (usually for using continuation)
+    %    ic_file          = 'none';
+    ic_file      = 'solutions_mat/ns_2d_steady_13_Re060_111814.mat';
+
+    %  Define Newton solver parameters
+    resid_tol        = 1e-4;
+    step_tol         = 1e-4;
+    max_iterations   = 25;
+
+    backtracking_iterations =  0;     % =0 is pure Newton...
+    lambda_1                =  1;
+                                
+    %  Define the Geometry
+    [x,e_conn,ide_u,ide_p,dir_u] = problem13_uv(false,msize);
+    f_function = @f_function0_2d;
+                                            
+    matlab_file  = ['solutions_mat/ns_2d_steady_13_Re',...
+                    sprintf('%03d',Re),'_',...
+                    sprintf('%06d',msize),'.mat'];
+    vtk_file     = ['solutions_vtk/ns_2d_steady_13_Re',...
+                    sprintf('%03d',Re),'_',...
+                    sprintf('%06d',msize),'.vtk'];
 
   else
     error('navierstokes_2d_steady:  flow_case=%d is not defined\n',flow_case)
